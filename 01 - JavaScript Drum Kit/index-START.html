@@ -59,7 +59,15 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-
+  window.addEventListener("keydown" , function(e) {
+    const audio = document.querySelector(`audio[data-key = "${e.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key = "${e.keyCode}"]`); //selecting key for animation
+    if(!audio) return; //stops function from running
+    //rewinds the sudio to the start if hit in succession, otherwise it will wait to complete until next play is finished
+    audio.currentTime = 0;
+    audio.play();
+    console.log(key);
+  });
 </script>
 
 
